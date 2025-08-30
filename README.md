@@ -19,11 +19,7 @@ It helps admins provide visibility of paid/spent hours, tasks, and structured da
 ---
 
 ## 🛠 Installation
-1. Deploy the app to your Atlassian site:
-   ```sh
-   forge deploy --environment production
-   forge install --environment production --product jira --site <your-site>.atlassian.net
-   ```
+1. Install the app to your Atlassian site:
 2. In Jira, go to **Project Settings → Apps → Organizations Info**.  
 3. Configure placement and copy your Webtrigger URL + token.
 
