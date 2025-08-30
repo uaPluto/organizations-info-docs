@@ -1,51 +1,99 @@
 # organizations-info-docs
-📘 Organizations Info App — User Manual
-1. Overview
-The Organizations Info app enhances Jira Service Management portals by showing organization-specific data directly in the customer view. Admins can control placement, manage content via secure storage, and push updates from external systems using webtriggers.
-2. Installation
-1. Deploy the app to your Atlassian site via admin or Forge CLI.
-2. Verify installation in Jira Administration → Manage apps.
-3. Open Project Settings → Apps → Organizations Info to configure.
-3. Settings Page
-On the settings page you can:
-- Manage block placement (header or footer).
-- Copy Webtrigger URL & Token for external integration.
-- View storage records (Storage Debug).
-- Clear all records if reset is needed.
-4. Data Format
-The app expects JSON payloads with:
-- key: Organization ID.
-- value: Object with hours, metadata, and issues.
+# 📘 Organizations Info App
 
-Example cURL:
+---
 
-curl --location 'https://<your-webtrigger-url>' \
---header 'x-api-token: <YOUR_TOKEN>' \
---header 'Content-Type: application/json' \
---data '{ "key": "1", "value": { "paidHours": "40", "spentHours": "35", "rows": { "issues": [ { "key": "BB-1", "summary": "EPIC A", "hours": 5, "status": "In Progress" } ] } } }'
-5. Portal View
-Customers linked to an organization will see:
-- Paid and Spent hours summary.
-- Expandable block with organization info.
-- Dynamic table built from JSON keys.
-- Hierarchical support (EPIC → Subtasks).
-6. Language Support
-The app adjusts automatically based on user profile language:
-- English
-- Ukrainian
-- Russian
-7. Security
-All data is stored in Forge secure storage.
-Webtrigger updates require x-api-token.
-App meets Runs on Atlassian standards.
-8. Troubleshooting
-- Block not visible: check placement and context.
-- No data shown: verify org ID in storage.
-- Webtrigger errors: ensure token is correct.
-- Debug: use View Storage option.
-9. Future Enhancements
-Planned updates:
-- More languages
-- Custom columns
-- Export/import data
+The **Organizations Info** app enhances Jira Service Management portals by displaying **organization-specific data** directly in the customer portal.  
+It helps admins provide visibility of paid/spent hours, tasks, and structured data for each organization in a clear, business-focused view.
+
+---
+
+## ⚙️ Features
+- 📍 **Configurable placement** — display the info block in the **portal header** or **footer**.  
+- 🔗 **Webtrigger integration** — securely push data from external systems using a token-protected API.  
+- 🌍 **Multi-language support** — English, Ukrainian, and Russian (automatically adapts to the user’s Jira profile language).  
+- 🔒 **Secure storage** — all data is stored in Atlassian Forge storage (meets *Runs on Atlassian* standards).  
+- 🗂 **Dynamic tables** — columns and rows are built automatically from JSON keys (e.g. `summary`, `hours`, `status`).  
+- 📊 **Hierarchical display** — supports EPIC → Subtasks structure.
+
+---
+
+## 🛠 Installation
+1. Deploy the app to your Atlassian site:
+   ```sh
+   forge deploy --environment production
+   forge install --environment production --product jira --site <your-site>.atlassian.net
+   ```
+2. In Jira, go to **Project Settings → Apps → Organizations Info**.  
+3. Configure placement and copy your Webtrigger URL + token.
+
+---
+
+## 📥 Data Input Format
+The app receives data via a **Webtrigger API** as JSON with two fields:
+- `key`: Organization ID.  
+- `value`: Object with hours, metadata, and issues.  
+
+### Example cURL
+```bash
+curl --location 'https://<your-webtrigger-url>' --header 'x-api-token: <YOUR_TOKEN>' --header 'Content-Type: application/json' --data '{
+  "key": "1",
+  "value": {
+    "paidHours": "40",
+    "spentHours": "35",
+    "rows": {
+      "issues": [
+        { "key": "BB-1", "summary": "EPIC A", "hours": 5, "status": "In Progress" },
+        { "key": "BB-2", "summary": "Subtask A1", "parentKey": "BB-1", "hours": 2.5 },
+        { "key": "BB-3", "summary": "Subtask A2", "parentKey": "BB-1", "hours": 1.2 }
+      ]
+    }
+  }
+}'
+```
+
+---
+
+## 👀 Portal View
+When configured, customers linked to an organization will see:
+- Paid hours & Spent hours summary.  
+- Expandable organization block.  
+- Dynamic issue table built from provided JSON.  
+- Hierarchy (EPIC → Subtasks).  
+
+---
+
+## 🌍 Language Support
+- English  
+- Ukrainian  
+- Russian  
+
+---
+
+## 🔒 Security
+- Secure Forge storage.  
+- Token-protected webtrigger for external updates.  
+- Fully compliant with Atlassian’s **Runs on Atlassian** program.  
+
+---
+
+## 🛠 Troubleshooting
+- **Block not visible** → check placement (header/footer) in settings.  
+- **No data** → verify organization ID matches the one in Jira.  
+- **403/424 webtrigger errors** → confirm you are sending the correct `x-api-token`.  
+- Use **View Storage** in settings to debug JSON data.
+
+---
+
+## 🚀 Roadmap
+- More languages  
+- Customizable columns  
+- Export/import of organization data  
+- Extended analytics dashboards  
+
+---
+
+## 📄 License
+This app is provided under the MIT License.  
+
 - Analytics dashboards
