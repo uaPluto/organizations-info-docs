@@ -4,7 +4,7 @@
 ---
 
 The **Organizations Info** app enhances Jira Service Management portals by displaying **organization-specific data** directly in the customer portal.  
-It helps admins provide visibility of paid/spent hours, tasks, and structured data for each organization in a clear, business-focused view.
+It helps admins provide visibility of paid/spent hours, tasks, and structured data for each organization in a clear, business-focused view. This app is designed to allow integration with external systems (for example, a project management system) and display to the user’s organization how the progress of their requests is going.
 
 ---
 
@@ -53,9 +53,7 @@ Postman:
 2. Paste the webtrigger URL with the token.
 3. In the Body tab, select raw → JSON, and provide the payload (example above).
 4. Click Send.
-After that, the updated info (organization, paid hours, spent hours, tasks) should appear in the app.
-
-This app is designed to allow integration with external systems (for example, a project management system) and display to the user’s organization how the progress of their requests is going.  
+After that, the updated info (organization, paid hours, spent hours, tasks) should appear in the app.  
 ---
 
 ## 👀 Portal View
@@ -100,4 +98,4 @@ When configured, customers linked to an organization will see:
 ## 📄 License
 This app is provided under the MIT License.  
 
-- Analytics dashboards
+
