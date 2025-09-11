@@ -47,7 +47,15 @@ curl --location 'https://<your-webtrigger-url>' --header 'x-api-token: <YOUR_TOK
   }
 }'
 ```
+You can send the POST request using any REST client .
+Postman:
+1. Select POST method.
+2. Paste the webtrigger URL with the token.
+3. In the Body tab, select raw → JSON, and provide the payload (example above).
+4. Click Send.
+After that, the updated info (organization, paid hours, spent hours, tasks) should appear in the app.
 
+This app is designed to allow integration with external systems (for example, a project management system) and display to the user’s organization how the progress of their requests is going.  
 ---
 
 ## 👀 Portal View
