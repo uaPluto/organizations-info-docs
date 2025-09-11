@@ -33,18 +33,17 @@ The app receives data via a **Webtrigger API** as JSON with two fields:
 ### Example cURL
 ```bash
 curl --location 'https://<your-webtrigger-url>' --header 'x-api-token: <YOUR_TOKEN>' --header 'Content-Type: application/json' --data '{
-  "key": "1",
+  "key": "org:34",
   "value": {
-    "paidHours": "40",
+    "paidHours": "34",
     "spentHours": "35",
-    "rows": {
-      "issues": [
-        { "key": "BB-1", "summary": "EPIC A", "hours": 5, "status": "In Progress" },
-        { "key": "BB-2", "summary": "Subtask A1", "parentKey": "BB-1", "hours": 2.5 },
-        { "key": "BB-3", "summary": "Subtask A2", "parentKey": "BB-1", "hours": 1.2 }
-      ]
-    }
-  }
+    "timestamp": "12-123-123",
+    "rows": { "issues": [
+        { "key": "BB-1",  "EPIC": "EPIC A", "Time spend": 5, "Status": "In Progress" },
+        { "key": "BB-2",  "Task": "Subtask A1", "parentKey": "BB-1", "Time spend": 2.5 },
+        { "key": "BB-3",  "Task": "Subtask A2", "parentKey": "BB-1", "Time spend": 2.5 }
+      ] 
+}}'
 }'
 ```
 You can send the POST request using any REST client .
