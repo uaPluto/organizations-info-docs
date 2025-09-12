@@ -34,13 +34,12 @@ The app receives data via a **Webtrigger API** as JSON with two fields:
 ```bash
 curl --location 'https://<your-webtrigger-url>' --header 'x-api-token: <YOUR_TOKEN>' --header 'Content-Type: application/json' 
 --data '{
-  "key": "34",
+  "key": "org:34",
   "value": {
-    "timestamp": "12-123-123",
-    "paidHours": "40",
+    "paidHours": "34",
     "spentHours": "35",
-    "rows": {
-      "issues": [
+    "timestamp": "12-123-123",
+    "rows": { "issues": [
         { "key": "BB-1",  "Назва задачі": "EPIC A", "Годин витрачено": 5, "Статус": "In Progress" },
         { "key": "BB-2",  "Назва задачі": "Subtask A1", "parentKey": "BB-1", "Годин витрачено": 2.5 },
         { "key": "BB-3",  "Назва задачі": "Subtask A2", "parentKey": "BB-1", "Годин витрачено": 1.2 },
@@ -54,10 +53,9 @@ curl --location 'https://<your-webtrigger-url>' --header 'x-api-token: <YOUR_TOK
         { "key": "BB-8",  "Назва задачі": "Subtask C1", "parentKey": "BB-7", "Годин витрачено": 1.0 },
         { "key": "BB-9",  "Назва задачі": "Subtask C2", "parentKey": "BB-7", "Годин витрачено": 0.8 },
         { "key": "BB-10", "Назва задачі": "Subtask C3", "parentKey": "BB-7", "Годин витрачено": 1.2 }
-      ]
-    }
+      ] 
   }
-}
+}}
 '
 ```
 You can send the POST request using any REST client .
