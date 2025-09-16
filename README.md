@@ -61,9 +61,37 @@ curl --location 'https://<your-webtrigger-url>' --header 'x-api-token: <YOUR_TOK
 You can send the POST request using any REST client .
 Postman:
 1. Select POST method.
-2. Paste the webtrigger URL with the token.
-3. In the Body tab, select raw → JSON, and provide the payload (example above).
-4. Click Send.
+2. Paste the webtrigger URL.
+3. In the Header tab add x-api-token: <your api token> from Settings page and check Content-Type: application/json
+5. In the Body tab, select raw → JSON, and provide the payload (example above).
+   ## Example JSON
+```bash
+{
+  "key": "org:34",
+  "value": {
+    "paidHours": "34",
+    "spentHours": "35",
+    "timestamp": "2025-09-16T00:00:00Z",
+    "rows": {
+      "issues": [
+        {
+          "key": "BB-1",
+          "name": "EPIC A",
+          "spentHours": 5,
+          "status": "In Progress"
+        },
+        {
+          "key": "BB-4",
+          "name": "Subtask A1",
+          "parentKey": "BB-1",
+          "spentHours": 2.5
+        }
+      ]
+    }
+  }
+}
+```
+7. Click Send.
 After that, the updated info (organization, paid hours, spent hours, tasks) should appear in the app.  
 ---
 
