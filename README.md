@@ -114,8 +114,6 @@ When configured, customers linked to an organization will see:
 ## 🔒 Security
 - Secure Forge storage.  
 - Token-protected webtrigger for external updates.  
-- Fully compliant with Atlassian’s **Runs on Atlassian** program.  
-
 ---
 
 ## 🛠 Troubleshooting
